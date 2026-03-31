@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llama 3.2 Fine-Tuning Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; background: #0f172a; color: #f8fafc; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow-blue { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        .gradient-text { background: linear-gradient(135deg, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Hero Section -->
+    <header class="pt-20 pb-10 text-center px-4">
+        <div class="inline-block px-4 py-1 mb-4 rounded-full glass border-blue-500/30 text-blue-400 text-sm font-medium animate-pulse">
+            Project Showcase: Fine-Tuning Llama 3.2
+        </div>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text">95.0% Parse Success Rate</h1>
+        <p class="max-w-2xl mx-auto text-slate-400 text-lg">
+            Specialized Fine-Tuning (LoRA) of Llama 3.2-3B for high-precision, machine-parseable JSON extraction from unstructured documents.
+        </p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 space-y-12">
+        
+        <!-- Metrics Grid -->
+        <section class="grid md:grid-cols-3 gap-6">
+            <div class="glass p-8 rounded-3xl glow-blue">
+                <div class="text-slate-400 text-sm mb-2 uppercase tracking-wider">Before (Baseline)</div>
+                <div class="text-4xl font-bold text-red-400">15.0%</div>
+                <div class="mt-4 h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div class="bg-red-400 h-full w-[15%]"></div>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-3xl border-blue-500/50 glow-blue">
+                <div class="text-slate-400 text-sm mb-2 uppercase tracking-wider">After (Fine-Tuned)</div>
+                <div class="text-4xl font-bold text-green-400">95.0%</div>
+                <div class="mt-4 h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div class="bg-green-400 h-full w-[95%]"></div>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-3xl glow-blue">
+                <div class="text-slate-400 text-sm mb-2 uppercase tracking-wider">Key Efficiency</div>
+                <div class="text-4xl font-bold text-blue-400">5.3x</div>
+                <p class="text-xs text-slate-500 mt-2">Improvement in machine-parseability</p>
+            </div>
+        </section>
+
+        <!-- Interactive Comparison Slider -->
+        <section class="glass p-10 rounded-3xl">
+            <h2 class="text-3xl font-bold mb-8">Before vs. After Comparison</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="text-red-400 font-semibold flex items-center gap-2">
+                        <span>●</span> Baseline Model Output
+                    </div>
+                    <pre class="bg-slate-900/50 p-6 rounded-2xl border border-red-500/20 text-xs text-slate-300 overflow-x-auto">
+"Here is the extraction for the invoice. 
+Note that tax was not listed.
+```json
+{
+  \"vendor\": \"Cloud Net\",
+  \"inv_no\": \"CN-1\",
+  \"total\": 500.0,
+  \"date\": \"Jan 10 2024\"
+}
+```
+I hope this helps!"</pre>
+                    <div class="text-[10px] text-slate-500 italic">Errors: Markdown fences, Prose prefix, Non-ISO date, Key name mismatch.</div>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-green-400 font-semibold flex items-center gap-2">
+                        <span>●</span> Fine-Tuned Model Output
+                    </div>
+                    <pre class="bg-slate-900/50 p-6 rounded-2xl border border-green-500/20 text-xs text-slate-300 overflow-x-auto">
+{
+  "vendor": "Cloud Net",
+  "invoice_number": "CN-1",
+  "date": "2024-01-10",
+  "due_date": null,
+  "currency": "USD",
+  "subtotal": 500.0,
+  "tax": null,
+  "total": 500.0,
+  "line_items": [
+    {"description": "Service charge", "quantity": 1.0, "unit_price": 500.0}
+  ]
+}</pre>
+                    <div class="text-[10px] text-slate-500 italic">Success: Clean JSON, Mandatory keys present, ISO date format.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Failure Analysis Highlight -->
+        <section class="grid md:grid-cols-2 gap-12 items-center py-12">
+            <div>
+                <h2 class="text-4xl font-bold mb-6">Deep Failure Analysis</h2>
+                <p class="text-slate-400 mb-8 leading-relaxed">
+                    We didn't stop at success. We analyzed 5 specific edge cases where the fine-tuned model still failed (e.g., European number formats, nested tables). This quantitative rigor is what drives production-grade AI.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex gap-4 p-4 glass rounded-2xl hover:bg-slate-800 transition">
+                        <div class="text-blue-400 font-bold">01</div>
+                        <div>
+                            <div class="text-sm font-semibold">Thousands Separator Confusion</div>
+                            <div class="text-xs text-slate-500">Misidentified '.' as decimal point in European formats.</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-4 glass rounded-2xl hover:bg-slate-800 transition">
+                        <div class="text-blue-400 font-bold">02</div>
+                        <div>
+                            <div class="text-sm font-semibold">Multi-Page Continuity</div>
+                            <div class="text-xs text-slate-500">Loss of context across page breaks in long POs.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                <div class="relative bg-slate-900 border border-slate-700/50 p-8 rounded-3xl">
+                    <h3 class="text-xl font-bold mb-4">Prompting vs. Fine-Tuning</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed italic">
+                        "While few-shot prompting can achieve high accuracy on simple tasks, fine-tuning remains the superior choice for production systems requiring extreme reliability, low latency, and consistent structural adherence across diverse layouts."
+                    </p>
+                    <div class="mt-6 text-blue-400 text-sm font-medium">Read Full Analysis →</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-20 text-center border-t border-slate-800 bg-slate-900/50 mt-20">
+        <p class="text-slate-400 mb-6">Built for the AI Fine-Tuning Capstone Project</p>
+        <div class="flex justify-center gap-8 text-sm font-medium text-blue-400 hover:text-blue-300">
+             <a href="https://github.com/Bhargavitalatam/Fine_Tuning">View on GitHub</a>
+        </div>
+    </footer>
+
+</body>
+</html>

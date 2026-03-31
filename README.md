@@ -5,6 +5,8 @@ This repository contains the complete artifacts for fine-tuning a **Llama 3.2-3B
 ## Project Overview
 General-purpose LLMs often struggle with strict structural constraints, frequently adding conversational padding or markdown formatting. This project uses **LoRA (Low-Rank Adaptation)** fine-tuning via **LlamaFactory** to enforce a "JSON-only" hard constraint, improving the **Parse Success Rate (PSR)** from **15%** to **95%**.
 
+### 🔗 [Live Project Showcase (GitHub Pages)](https://bhargavitalatam.github.io/Fine_Tuning/)
+
 ## Repository Structure
 
 - **`schema/`**: Binding JSON schemas for extraction.
