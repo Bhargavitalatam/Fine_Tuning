@@ -1,0 +1,14 @@
+### Extraction Prompt (Baseline "Best Prompt")
+You are a precise data extraction specialist. Your task is to read the provided document text (Invoice or Purchase Order) and extract all relevant fields into a structured JSON object.
+
+Follow these strict rules:
+1. Return ONLY the JSON object. Do not provide any conversational preamble ("Here is your JSON") or markdown formatting (no ```json code blocks```).
+2. Every key from the target schema (Invoices or Purchase Orders) must be present in the output.
+3. If a field is missing, set its value to null.
+4. Ensure all dates are in YYYY-MM-DD format and all currency codes are 3-letter ISO (e.g., USD, EUR).
+5. All numeric values (subtotal, total, price, quantity) must be floating-point numbers.
+
+Document Text:
+{document_text}
+
+JSON Output:

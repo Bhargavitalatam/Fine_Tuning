@@ -1,0 +1,21 @@
+filename	raw_output_first_50_chars	is_valid_json	has_all_required_keys	key_accuracy	value_accuracy	notes
+test_INV_00	"{""vendor"": ""Cloud Net"", ""invoice_number"": ""CN-1"", "	True	True	1.0	1.0	Perfect extraction
+test_INV_01	"{""vendor"": ""Bio Lab"", ""invoice_number"": ""BL-99"", """	True	True	1.0	1.0	Perfect extraction
+test_INV_02	"{""vendor"": ""Fast Trans"", ""invoice_number"": ""FT-02"""	True	True	1.0	1.0	Perfect extraction
+test_INV_03	"{""vendor"": ""Eco Power"", ""invoice_number"": ""EP-33"","	True	True	1.0	1.0	Perfect extraction
+test_INV_04	"{""vendor"": ""Steel Works"", ""invoice_number"": ""SW-44"	True	True	1.0	1.0	Perfect extraction
+test_INV_05	"{""vendor"": ""Office Depot"", ""invoice_number"": ""OD-5"	True	True	1.0	1.0	Perfect extraction
+test_INV_06	"{""vendor"": ""Sky Media"", ""invoice_number"": ""SM-66"","	True	True	1.0	1.0	Perfect extraction
+test_INV_07	"{""vendor"": ""Pure Water"", ""invoice_number"": ""PW-77"""	True	True	1.0	1.0	Perfect extraction
+test_INV_08	"{""vendor"": ""Safe Guard"", ""invoice_number"": ""SG-88"""	True	True	1.0	1.0	Perfect extraction
+test_INV_09	"{""vendor"": ""Build It"", ""invoice_number"": ""BI-100"","	True	True	1.0	1.0	Perfect extraction
+test_PO_00	"{""buyer"": ""Group A"", ""supplier"": ""Vendor X"", ""po_n"	True	True	1.0	1.0	Perfect extraction
+test_PO_01	"{""buyer"": ""Group B"", ""supplier"": ""Vendor Y"", ""po_n"	True	True	1.0	1.0	Perfect extraction
+test_PO_02	"{""buyer"": ""Group C"", ""supplier"": ""Vendor Z"", ""po_n"	True	True	1.0	1.0	Perfect extraction
+test_PO_03	"{""buyer"": ""Group D"", ""supplier"": ""Vendor W"", ""po_n"	True	True	1.0	1.0	Perfect extraction
+test_PO_04	"{""buyer"": ""Group E"", ""supplier"": ""Vendor V"", ""po_n"	True	True	1.0	1.0	Perfect extraction
+test_PO_05	"{""buyer"": ""Group F"", ""supplier"": ""Vendor U"", ""date"	True	False	0.8	1.0	Failure: missing po_number key
+test_PO_06	"{""buyer"": ""Group G"", ""supplier"": ""Vendor T"", ""po_n"	True	True	1.0	1.0	Perfect extraction
+test_PO_07	"{""buyer"": ""Group H"", ""supplier"": ""Vendor S"", ""po_n"	True	True	1.0	1.0	Perfect extraction
+test_PO_08	"{""buyer"": ""Group I"", ""supplier"": ""Vendor R"", ""po_n"	True	True	1.0	1.0	Perfect extraction
+test_PO_09	"{""buyer"": ""Group J"", ""supplier"": ""Vendor Q"", ""po_n"	True	True	1.0	1.0	Perfect extraction

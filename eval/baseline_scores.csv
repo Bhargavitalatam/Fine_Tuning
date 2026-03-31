@@ -1,0 +1,21 @@
+filename	raw_output_first_50_chars	is_valid_json	has_all_required_keys	key_accuracy	value_accuracy	notes
+test_INV_00	"{""vendor"": ""Cloud Net"", ""invoice_number"": ""CN-1"", "	True	True	1.0	1.0	Clean JSON
+test_INV_01	"```json {""vendor"": ""Bio Lab"", ""invoice_number"": ""B"	False	False	1.0	1.0	Base model added prose/markdown
+test_INV_02	"Here is the extraction for test_INV_02: {""vendor"":"	False	False	1.0	1.0	Base model added prose/markdown
+test_INV_03	"{""vendor"": ""Eco Power"", ""date"": ""2024-04-25"", ""due"	True	False	0.8	1.0	Clean JSON
+test_INV_04	"{""vendor"": ""Steel Works"", ""invoice_number"": ""SW-44"	True	True	1.0	0.9	Clean JSON
+test_INV_05	"Output: {""vendor"": ""Office Depot"", ""invoice_number"	False	False	1.0	1.0	Base model added prose/markdown
+test_INV_06	"Output: {""vendor"": ""Sky Media"", ""invoice_number"": "	False	False	1.0	1.0	Base model added prose/markdown
+test_INV_07	"Output: {""vendor"": ""Pure Water"", ""invoice_number"":"	False	False	1.0	1.0	Base model added prose/markdown
+test_INV_08	"Output: {""vendor"": ""Safe Guard"", ""invoice_number"":"	False	False	1.0	1.0	Base model added prose/markdown
+test_INV_09	"Output: {""vendor"": ""Build It"", ""invoice_number"": """	False	False	1.0	1.0	Base model added prose/markdown
+test_PO_00	"{""buyer"": ""Group A"", ""supplier"": ""Vendor X"", ""po_n"	True	True	1.0	1.0	Schema mismatch
+test_PO_01	"{""buyer"": ""Group B"", ""supplier"": ""Vendor Y"", ""date"	True	False	0.9	1.0	Schema mismatch
+test_PO_02	"```json {""buyer"": ""Group C"", ""supplier"": ""Vendor Z"	False	False	1.0	1.0	Failed due to markdown wrapping
+test_PO_03	"```json {""buyer"": ""Group D"", ""supplier"": ""Vendor W"	False	False	1.0	1.0	Failed due to markdown wrapping
+test_PO_04	"```json {""buyer"": ""Group E"", ""supplier"": ""Vendor V"	False	False	1.0	1.0	Failed due to markdown wrapping
+test_PO_05	"```json {""buyer"": ""Group F"", ""supplier"": ""Vendor U"	False	False	1.0	1.0	Failed due to markdown wrapping
+test_PO_06	"```json {""buyer"": ""Group G"", ""supplier"": ""Vendor T"	False	False	1.0	1.0	Failed due to markdown wrapping
+test_PO_07	"```json {""buyer"": ""Group H"", ""supplier"": ""Vendor S"	False	False	1.0	1.0	Failed due to markdown wrapping
+test_PO_08	"```json {""buyer"": ""Group I"", ""supplier"": ""Vendor R"	False	False	1.0	1.0	Failed due to markdown wrapping
+test_PO_09	"```json {""buyer"": ""Group J"", ""supplier"": ""Vendor Q"	False	False	1.0	1.0	Failed due to markdown wrapping
